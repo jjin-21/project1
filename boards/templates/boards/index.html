@@ -29,7 +29,7 @@
             <tr>
                 <th scope="row">{{ board.pk }}</th>
                 <td><a href="{% url "boards:detail" board.pk %}">{{ board.title }}</a></td>
-                <th scope="row">{{ board.auth.nickname }}</th>
+                <th scope="row">{{ board.user.nickname }}</th>
                 <td>{{ board.created_at }}</td>
             </tr>
             {% endfor %}

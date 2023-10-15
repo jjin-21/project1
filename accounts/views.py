@@ -32,6 +32,9 @@ def signup(request):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
+            # 회원가입 후 바로 로그인
+            # user = form.save()
+            # auth_login(request, user)
             return redirect('accounts:login')
     else:
         form = CustomUserCreationForm()
@@ -48,7 +51,7 @@ def update(request, pk):
             form.save()
             return redirect('boards:index')
     else:
-        form = CustomUserChangeForm()
+        form = CustomUserChangeForm(instance=request.user)
     context = {
         'form': form,
     }
